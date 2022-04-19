@@ -1,337 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      /* Global Styles */
 
-/* Global Styles */
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-* {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      body {
+        padding: 40px 10%;
+        background: #f5f5f5;
+      }
 
-body {
-  padding: 40px 10%;
-  background: #f5f5f5;
-}
+      a {
+        text-decoration: none;
+      }
 
-a{
-  text-decoration: none;
-}
+      /* Container Styles */
+      .container {
+        display: flex;
+      }
+      .main-wrapper {
+        flex: 2;
+      }
+      .side-bar {
+        background: #faf9f9;
+        flex: 1;
+        padding: 40px;
+        /* background-color: white; */
+      }
 
-/* Container Styles */
-.container {
-  display: flex;
-}
-.main-wrapper{
-  flex: 2;
-}
-.side-bar{
-  background: #faf9f9;
-  flex: 1;
-  padding: 40px;
-  /* background-color: white; */
-}
+      .side-bar ul {
+        padding: 0 40px;
+        list-style: none;
+      }
 
-.side-bar ul{
-  padding: 0 40px;
-  list-style: none;
-}
+      .side-bar {
+        background: rgb(230, 230, 231);
+      }
 
-.side-bar{
-  background: rgb(230, 230, 231);
-}
+      @media only screen and (max-width: 900px) {
+        .container {
+          flex-direction: column;
+        }
+        .side-bar {
+          background: #b1b828;
+          color: white !important;
+        }
+        .side-bar a {
+          color: white !important;
+        }
+      }
 
+      /* Navigation Menu Styles */
 
-@media only screen and (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-  .side-bar{
-    background: #b1b828;
-    color: white !important;
-  }
-  .side-bar a{
-    color: white !important;
-  }
-}
+      nav.nav-menu {
+        width: 100%;
+        background-color: #b1b828;
+        padding: 10px;
+      }
 
+      nav.nav-menu ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size: clamp(0.8rem, 1.2vw, 2rem);
+      }
 
+      .nav-menu .nav-item {
+        padding: 15px;
+        transition: background-color 500ms ease-in-out;
+      }
 
-/* Navigation Menu Styles */
+      .nav-menu .nav-item:hover {
+        cursor: pointer;
+        background-color: #f5f5f54d;
+      }
 
-nav.nav-menu {
-  width: 100%;
-  background-color: #b1b828;
-  padding: 10px;
-}
+      .nav-menu .nav-item a {
+        text-decoration: none;
+        color: white;
+      }
 
-nav.nav-menu ul {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  font-size: clamp(.8rem, 1.2vw, 2rem); 
-}
+      /* Main Content Wrapper Styles */
+      .main-wrapper {
+        background: white;
+        padding: 40px;
+      }
 
-.nav-menu .nav-item {
-  padding: 15px;
-  transition: background-color 500ms ease-in-out;
-}
+      section {
+        margin-bottom: 60px;
+      }
 
-.nav-menu .nav-item:hover {
-  cursor: pointer;
-  background-color: #f5f5f54d;
-}
+      section.head,
+      section.youtube-embed {
+        text-align: center;
+      }
 
-.nav-menu .nav-item a{
-  text-decoration: none;
-  color: white;
-}
+      .button-link {
+        display: block;
+        margin: 20px 0 0 0;
+        padding: 10px 40px;
+        width: fit-content;
+        background: #b1b828;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        transition: 0.3s transform ease-in-out;
+      }
 
+      .button-link:hover {
+        transform: scale(1.05);
+      }
 
-/* Main Content Wrapper Styles */
-.main-wrapper {
-  background: white;
-  padding: 40px;
-}
+      h1 {
+        font-size: 34px;
+      }
 
-section {
-  margin-bottom: 60px;
-}
+      h2 {
+        margin-bottom: 20px;
+      }
 
-section.head,
-section.youtube-embed {
-  text-align: center;
-}
+      p {
+        text-align: justify;
+        margin-bottom: 10px;
+        line-height: 1.5rem;
+      }
 
-.button-link {
-  display: block;
-  margin: 20px 0 0 0;
-  padding: 10px 40px;
-  width: fit-content;
-  background: #b1b828;
-  border-radius: 5px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s transform ease-in-out;
-}
+      img {
+        max-width: 100%;
+      }
 
-.button-link:hover {
-  transform: scale(1.05);
-}
+      .two-col {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
 
-h1 {
-  font-size: 34px;
-}
+      .two-col div {
+        width: 50%;
+      }
 
-h2 {
-  margin-bottom: 20px;
-}
+      @media only screen and (max-width: 900px) {
+        body {
+          padding: 0;
+        }
 
-p {
-  text-align: justify;
-  margin-bottom: 10px;
-  line-height: 1.5rem;
-}
+        .two-col {
+          flex-direction: column;
+        }
 
-img {
-  max-width: 100%;
-}
+        .two-col div {
+          width: 100%;
+        }
 
-.two-col {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
+        .main-wrapper {
+          padding: 5%;
+        }
+      }
+    </style>
+    <title>The Benefits of Having a TV Mounting Service | LA TV Mounters</title>
+  </head>
 
-.two-col div {
-  width: 50%;
-}
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul>
+        <li class="nav-item"><a href="https://latvmounters.com/">Main</a></li>
+        <li class="nav-item">
+          <a href="https://g.page/latvmounters?share">Maps</a>
+        </li>
+        <li class="nav-item"><a href="./media.html">Media</a></li>
+      </ul>
+    </nav>
 
-@media only screen and (max-width: 900px) {
-  body {
-    padding: 0;
-  }
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Main Content Wrapper -->
+      <div class="main-wrapper">
+        <section class="head">
+          <h1>The Benefits of Having a TV Mounting Service</h1>
+        </section>
 
-  .two-col {
-    flex-direction: column;
-  }
+        <section>
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/i1ywTqy8sKI"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <a
+            class="button-link"
+            href="https://latvmounters.com/the-benefits-of-having-a-tv-mounting-service/"
+            >Read Post</a
+          >
+        </section>
 
-  .two-col div {
-    width: 100%;
-  }
+        <section>
+          <p>
+            TV mounting services offer a wide range of benefits for homeowners.
+            For example, if you’re looking to save money, it’s important to know
+            that hiring professionals will help you avoid the need to purchase
+            an expensive TV stand. The same goes for anyone who doesn’t have
+            room in their home or apartment for a traditional TV stand. Even
+            though this is one of the main reasons why people use TV mounting
+            services, it’s important to know that there are other benefits as
+            well.
+          </p>
+          <p>
+            Another great benefit of hiring a professional TV mounting service
+            is that you won’t have to worry about installation. This means that
+            you can save yourself a lot of time and hassle. If you’re not
+            familiar with the process of installing a TV, it’s important to know
+            that it can be quite difficult. If you don’t do it correctly, you
+            could damage your TV.
+          </p>
+          <p>
+            When you hire a professional TV mounting service, you’ll also be
+            able to rest assured knowing that your TV will be mounted properly.
+            This is very important, as improper mounting can lead to your TV
+            falling and breaking.
+          </p>
+          <p>
+            Overall, many benefits come along with hiring a professional TV
+            mounting service. If you’re looking for a convenient and affordable
+            way to mount your TV, it’s something that you should consider. Not
+            only will it save you time and money, but it will also help you
+            avoid damage to your TV.
+          </p>
+        </section>
 
-  .main-wrapper {
-    padding: 5%;
-  }
-}
-   </style>
-  <title>The Benefits of Having a TV Mounting Service | LA TV Mounters</title>
-</head>
+        <section>
+          <h2>
+            TV mounting services provide a safe and secure way to mount your
+            television
+          </h2>
+          <p>
+            Mounting your television is a great way to keep it safe and secure.
+            Television mounting services provide a variety of mounts that can be
+            used to attach your television to the wall or another surface in
+            your home. This can help to keep it from being knocked over or
+            damaged, and can also make it more difficult for children or pets to
+            reach. TV mounting services can also provide you with a variety of
+            cables and wires to help connect your television to your home
+            entertainment system.
+          </p>
+          <a class="button-link" href="https://latvmounters.com/">Visit Us</a>
+        </section>
 
-<body>
-  <!-- Navigation Menu -->
-  <nav class="nav-menu">
-    <ul>
-      <li class="nav-item"><a href="https://latvmounters.com/">Main</a></li>
-      <li class="nav-item"><a href="https://g.page/latvmounters?share">Maps</a></li>
-      <li class="nav-item"><a href="./media.html">Media</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content Container -->
-  <div class="container">
-
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-      <section class="head">
-        <h1>The Benefits of Having a TV Mounting Service</h1>
-      </section>
-   
-      <section>
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/i1ywTqy8sKI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <a class="button-link"
-                href="https://latvmounters.com/the-benefits-of-having-a-tv-mounting-service/">Read Post</a>
-      </section>
-
-      <section>
-        <p>TV mounting services offer a wide range of benefits for homeowners. For example, if you’re looking to save money, it’s important to know that hiring professionals will help you avoid the need to purchase an expensive TV stand. The same goes for anyone who doesn’t have room in their home or apartment for a traditional TV stand. Even though this is one of the main reasons why people use TV mounting services, it’s important to know that there are other benefits as well.</p>
-        <p>Another great benefit of hiring a professional TV mounting service is that you won’t have to worry about installation. This means that you can save yourself a lot of time and hassle. If you’re not familiar with the process of installing a TV, it’s important to know that it can be quite difficult. If you don’t do it correctly, you could damage your TV.</p>
-        <p>When you hire a professional TV mounting service, you’ll also be able to rest assured knowing that your TV will be mounted properly. This is very important, as improper mounting can lead to your TV falling and breaking.</p>
-        <p>Overall, many benefits come along with hiring a professional TV mounting service. If you’re looking for a convenient and affordable way to mount your TV, it’s something that you should consider. Not only will it save you time and money, but it will also help you avoid damage to your TV.</p>
-      </section>
-
-      <section>
-        <h2>TV mounting services provide a safe and secure way to mount your television</h2>
-        <p>Mounting your television is a great way to keep it safe and secure. Television mounting services provide a variety of mounts that can be used to attach your television to the wall or another surface in your home. This can help to keep it from being knocked over or damaged, and can also make it more difficult for children or pets to reach. TV mounting services can also provide you with a variety of cables and wires to help connect your television to your home entertainment system.</p>
-          <a class="button-link"
-                href="https://latvmounters.com/">Visit Us</a>
-      </section>
-
-      <section>
-        <div class="two-col">
-          <div>
-            <h2>They offer a variety of mounting options to choose from</h2>
-            <p>Mounting your television can provide several benefits, including improved viewing angles, increased security, and a neater appearance. TV mounting services offer a variety of mounting options to choose from, so you can find the perfect solution for your needs. Some popular mounting options include wall mounts, ceiling mounts, and stand mounts. Each type of mount has its own set of benefits, so be sure to research your options before deciding on amount.</p>
-            <p>Wall mounts are the most popular type of mount, and they offer a variety of benefits. They’re easy to install and can be used with any type of television. Wall mounts also provide increased security, as they make it difficult for thieves to steal your television. Additionally, wall mounts can be adjusted to provide the perfect viewing angle for your needs.</p>
-            <p>Ceiling mounts are another popular option, and they offer several benefits as well. Ceiling mounts are great for small spaces, as they take up less space than wall mounts. They also provide increased security, as they make it difficult for thieves to steal your television. Additionally, ceiling mounts can be adjusted to provide the perfect viewing angle for your needs.</p>
+        <section>
+          <div class="two-col">
+            <div>
+              <h2>They offer a variety of mounting options to choose from</h2>
+              <p>
+                Mounting your television can provide several benefits, including
+                improved viewing angles, increased security, and a neater
+                appearance. TV mounting services offer a variety of mounting
+                options to choose from, so you can find the perfect solution for
+                your needs. Some popular mounting options include wall mounts,
+                ceiling mounts, and stand mounts. Each type of mount has its own
+                set of benefits, so be sure to research your options before
+                deciding on amount.
+              </p>
+              <p>
+                Wall mounts are the most popular type of mount, and they offer a
+                variety of benefits. They’re easy to install and can be used
+                with any type of television. Wall mounts also provide increased
+                security, as they make it difficult for thieves to steal your
+                television. Additionally, wall mounts can be adjusted to provide
+                the perfect viewing angle for your needs.
+              </p>
+              <p>
+                Ceiling mounts are another popular option, and they offer
+                several benefits as well. Ceiling mounts are great for small
+                spaces, as they take up less space than wall mounts. They also
+                provide increased security, as they make it difficult for
+                thieves to steal your television. Additionally, ceiling mounts
+                can be adjusted to provide the perfect viewing angle for your
+                needs.
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/geougc/AF1QipOqQ45IU-S2L8jEEbpQ7vH8GNdtSnW2_ykPhGLY=h400-no"
+                alt="TV Mounting Service Los Angeles"
+              />
+              <br />
+              <img
+                src="https://latvmounters.com/wp-content/uploads/2021/10/LA-TV-Mounters-Residential-TV-Mounting-Service.jpg"
+                alt="TV Mounting Service Los Angeles"
+              />
+            </div>
           </div>
-          <div style="display:flex; flex-direction: column; justify-content:center">
-            <img src="https://lh3.googleusercontent.com/geougc/AF1QipOqQ45IU-S2L8jEEbpQ7vH8GNdtSnW2_ykPhGLY=h400-no" alt="TV Mounting Service Los Angeles">
-            <br>
-            <img src="https://latvmounters.com/wp-content/uploads/2021/10/LA-TV-Mounters-Residential-TV-Mounting-Service.jpg" alt="TV Mounting Service Los Angeles">
+          <br />
+          <p>
+            Stand mounts are a great option for those who want to move their
+            television from room to room. They’re easy to install and don’t
+            require any drilling or holes in the wall. Stand mounts also provide
+            increased security, as they make it difficult for thieves to steal
+            your television. Additionally, stand mounts can be adjusted to
+            provide the perfect viewing angle for your needs.
+          </p>
+          <p>
+            No matter which type of mount you choose, be sure to research your
+            options before making a decision. Each type of mount has its own set
+            of benefits, so be sure to find the perfect solution for your needs.
+            With a little bit of research, you can find the perfect TV mounting
+            service for your needs.
+          </p>
+        </section>
+
+        <section>
+          <h2>
+            TV mounting services are affordable and can save you money in the
+            long run
+          </h2>
+          <p>
+            TV mounting services are affordable and can save you money in the
+            long run. There is a lot of information out there that will tell you
+            to mount your TV on the wall, but not so many people know what it
+            means to have mounted their TV. The idea of mounting your TV might
+            sound like an easy task, but it can be quite difficult if you don’t
+            know what to do or how to do it properly. That is why we recommend
+            hiring a professional who specializes in installing TVs on walls for
+            a low price. If you hire someone with experience, they will be able
+            to install your television correctly and make sure everything looks
+            great when they are done so that you are happy with the result!
+          </p>
+          <p>
+            Hiring a professional to mount your TV has many benefits, the most
+            important being that they will save you time and money in the long
+            run. If you try to mount your TV, you will likely make mistakes that
+            could end up costing you more money to fix than it would have if you
+            had just hired someone in the first place. Also, professionals know
+            how to correctly install TVs so that they look great and are secure
+            on the wall, which is something you might not be able to achieve on
+            your own.
+          </p>
+        </section>
+
+        <section>
+          <div class="two-col">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/geougc/AF1QipOY_ABYcYHkrNQLW1_7vrb_zSTKDlEgveLf-1VK=h400-no"
+                alt="TV Mounting Service Los Angeles"
+              />
+              <br />
+              <img
+                src="https://latvmounters.com/wp-content/uploads/2021/10/Tv-mounting-service-cost-Los-Angeles-1024x683.jpg"
+                alt="TV Mounting Service Los Angeles"
+              />
+            </div>
+            <div>
+              <h2>They offer fast, efficient, and reliable service</h2>
+              <p>
+                Mounting a television can be a daunting task. It is made even
+                more difficult by the fact that most televisions weigh anywhere
+                from 30 to 100 pounds. In addition, many people do not have the
+                proper tools or knowledge to mount a television safely and
+                securely. This is where LA TV Mounters come in. LA TV Mounters
+                offer fast, efficient, and reliable service. They have the
+                proper tools and knowledge to safely and securely mount your
+                television for you. This can save you time and hassle, and it
+                can also help ensure that your television is mounted correctly
+                and safely. In addition to their fast and efficient service, LA
+                TV Mounters also offer competitive prices. This can be a great
+                option for those who are on a tight budget.
+              </p>
+              <br />
+              <h2>
+                Their technicians are experienced and knowledgeable in TV
+                mounting can help.
+              </h2>
+              <p>
+                Their technicians are experienced and knowledgeable in TV
+                mounting can help. If you are looking for a professional team of
+                experts who can help you with your television mounting needs,
+                then LA TV Mounters is a perfect choice for you. They offer
+                fast, efficient, and reliable service at a competitive price.
+                Contact LA TV Mounters today to get started.
+              </p>
+            </div>
           </div>
-        </div>
-        <br>
-        <p>Stand mounts are a great option for those who want to move their television from room to room. They’re easy to install and don’t require any drilling or holes in the wall. Stand mounts also provide increased security, as they make it difficult for thieves to steal your television. Additionally, stand mounts can be adjusted to provide the perfect viewing angle for your needs.</p>
-        <p>No matter which type of mount you choose, be sure to research your options before making a decision. Each type of mount has its own set of benefits, so be sure to find the perfect solution for your needs. With a little bit of research, you can find the perfect TV mounting service for your needs.</p>
-      </section>
+        </section>
 
-      <section>
-        <h2>TV mounting services are affordable and can save you money in the long run</h2>
-        <p>TV mounting services are affordable and can save you money in the long run. There is a lot of information out there that will tell you to mount your TV on the wall, but not so many people know what it means to have mounted their TV. The idea of mounting your TV might sound like an easy task, but it can be quite difficult if you don’t know what to do or how to do it properly. That is why we recommend hiring a professional who specializes in installing TVs on walls for a low price. If you hire someone with experience, they will be able to install your television correctly and make sure everything looks great when they are done so that you are happy with the result!</p>
-        <p>Hiring a professional to mount your TV has many benefits, the most important being that they will save you time and money in the long run. If you try to mount your TV, you will likely make mistakes that could end up costing you more money to fix than it would have if you had just hired someone in the first place. Also, professionals know how to correctly install TVs so that they look great and are secure on the wall, which is something you might not be able to achieve on your own.</p>
-      </section>
+        <section>
+          <h2>They provide a satisfaction guarantee on all their work</h2>
+          <p>
+            TV mounting is a delicate and often overlooked process that should
+            be handled by a professional. Many people don’t realize the
+            importance of a good TV mount until they’ve already botched the job
+            and have to call in a specialist. That’s why LA TV Mounters offers a
+            satisfaction guarantee on all their work – because they’re confident
+            in the quality of their mounts and the expertise of their team.
+          </p>
+          <p>
+            LA TV Mounters is the best TV mounting service in Los Angeles. They
+            provide a wide range of services including installation, repair, and
+            maintenance of all types of televisions. No matter what kind of
+            television you have, LA TV Mounters can help you get the most out of
+            it.
+          </p>
+          <p>
+            If you’re looking for a TV mounting service in Los Angeles, LA TV
+            Mounters is the best option. They offer quality services at an
+            affordable price, and they are reliable and trustworthy. You can be
+            sure that your television is in good hands when you choose LA TV
+            Mounters.
+          </p>
+          <a
+            class="button-link"
+            href="https://google.com/maps/?cid=1230856629811416077"
+            >Find Us Here!</a
+          >
+        </section>
 
-      <section>
-        <div class="two-col">
-          <div style="display:flex; flex-direction: column; justify-content:center">
-            <img src="https://lh3.googleusercontent.com/geougc/AF1QipOY_ABYcYHkrNQLW1_7vrb_zSTKDlEgveLf-1VK=h400-no" alt="TV Mounting Service Los Angeles">
-            <br>
-            <img src="https://latvmounters.com/wp-content/uploads/2021/10/Tv-mounting-service-cost-Los-Angeles-1024x683.jpg" alt="TV Mounting Service Los Angeles">
-          </div>
-          <div>
-            <h2>They offer fast, efficient, and reliable service</h2>
-            <p>Mounting a television can be a daunting task. It is made even more difficult by the fact that most televisions weigh anywhere from 30 to 100 pounds. In addition, many people do not have the proper tools or knowledge to mount a television safely and securely. This is where LA TV Mounters come in. LA TV Mounters offer fast, efficient, and reliable service. They have the proper tools and knowledge to safely and securely mount your television for you. This can save you time and hassle, and it can also help ensure that your television is mounted correctly and safely. In addition to their fast and efficient service, LA TV Mounters also offer competitive prices. This can be a great option for those who are on a tight budget.</p>
-            <br>
-            <h2>Their technicians are experienced and knowledgeable in TV mounting can help.</h2>
-            <p>Their technicians are experienced and knowledgeable in TV mounting can help. If you are looking for a professional team of experts who can help you with your television mounting needs, then LA TV Mounters is a perfect choice for you. They offer fast, efficient, and reliable service at a competitive price. Contact LA TV Mounters today to get started.</p>
-          </div>
-        </div>
-      </section>
+        <section>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d422613.01392768254!2d-118.457848!3d34.154933!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1114e1955d580c0d!2sLA%20TV%20Mounters%20-%20TV%20Mounting%20Service%20Los%20Angeles!5e0!3m2!1sen!2sph!4v1649726758619!5m2!1sen!2sph"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            >TV Mounting Service Los Angeles</iframe
+          >
+        </section>
 
-      <section>
-        <h2>They provide a satisfaction guarantee on all their work</h2>
-        <p>TV mounting is a delicate and often overlooked process that should be handled by a professional. Many people don’t realize the importance of a good TV mount until they’ve already botched the job and have to call in a specialist. That’s why LA TV Mounters offers a satisfaction guarantee on all their work – because they’re confident in the quality of their mounts and the expertise of their team.</p>
-        <p>LA TV Mounters is the best TV mounting service in Los Angeles. They provide a wide range of services including installation, repair, and maintenance of all types of televisions. No matter what kind of television you have, LA TV Mounters can help you get the most out of it.</p>
-        <p>If you’re looking for a TV mounting service in Los Angeles, LA TV Mounters is the best option. They offer quality services at an affordable price, and they are reliable and trustworthy. You can be sure that your television is in good hands when you choose LA TV Mounters.</p>
-          <a class="button-link"
-                href="https://google.com/maps/?cid=1230856629811416077">Find Us Here!</a>
-      </section>
+        <section>
+          <iframe
+            src="https://travel.usnews.com/Los_Angeles_CA/Things_To_Do/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d422613.01392768254!2d-118.457848!3d34.154933!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1114e1955d580c0d!2sLA%20TV%20Mounters%20-%20TV%20Mounting%20Service%20Los%20Angeles!5e0!3m2!1sen!2sph!4v1649726758619!5m2!1sen!2sph" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">TV Mounting Service Los Angeles</iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjNqJuLsI33AhWEtpYKHZqXDNMYABACGgJ0bA&ae=2&ohost=www.google.com&cid=CAESbeD2nInd64-2-MhdCSc9kBZhHaBcoCiteFtgtGxPeUz8UdM02aGipiR68tAlTxaNnA601bnkasuPZnoauFXi2wpmkw5DyRYGAG9-h2sLUm7OGZeMOUZRBiP26OZGRzrQUwx42v31S565ovBf3iQ&sig=AOD64_04e7JyySkXcFe5GjWZbrLBIbwmdQ&q&adurl&ved=2ahUKEwjF-5OLsI33AhVzIqYKHcD3D-IQ0Qx6BAgCEAE"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://travel.usnews.com/Los_Angeles_CA/Things_To_Do/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://latvmounters.com/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjNqJuLsI33AhWEtpYKHZqXDNMYABACGgJ0bA&ae=2&ohost=www.google.com&cid=CAESbeD2nInd64-2-MhdCSc9kBZhHaBcoCiteFtgtGxPeUz8UdM02aGipiR68tAlTxaNnA601bnkasuPZnoauFXi2wpmkw5DyRYGAG9-h2sLUm7OGZeMOUZRBiP26OZGRzrQUwx42v31S565ovBf3iQ&sig=AOD64_04e7JyySkXcFe5GjWZbrLBIbwmdQ&q&adurl&ved=2ahUKEwjF-5OLsI33AhVzIqYKHcD3D-IQ0Qx6BAgCEAE" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./media.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://latvmounters.com/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./index.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./media.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <a
+            target="_bLank"
+            href="https://rank-fortress-digital-agency.github.io/latvmounters-04-22/"
+            >https://rank-fortress-digital-agency.github.io/latvmounters-04-22/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="http://latvmounters-04-22.s3-website-ap-southeast-1.amazonaws.com/"
+            >http://latvmounters-04-22.s3-website-ap-southeast-1.amazonaws.com/</a
+          ><br />
+          <a target="_bLank" href="https://zesty-cobbler-ad7bd1.netlify.app/"
+            >https://zesty-cobbler-ad7bd1.netlify.app/</a
+          >
+        </section>
+      </div>
 
-      <section>
-        <iframe src="./index.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+      <!-- Sidebar -->
+      <div class="side-bar">
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/latvmounters">Facebook</a>
+            </li>
+            <li>
+              <a href="https://google.com/maps/?cid=1230856629811416077"
+                >Google Page</a
+              >
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCgosoqZbb2zuNNxdqTDSFfQ"
+                >Youtube</a
+              >
+            </li>
+            <li><a href="#">Pearltrees</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Google Site</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </section>
 
- 
-      <section>
-        <!-- WEBSITE EMBED -->
-
-        <!-- MEDIA ROOM -->
-
-        <!-- BUSINESS SITE -->
-       
-        <!-- PEARL TREES -->
-        
-        <!-- CLOUD STACK SITE -->
-        
-      </section>
-
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://latvmounters.com/">Main</a></li>
+            <li><a href="https://g.page/latvmounters?share">Maps</a></li>
+            <li><a href="./media.html">Media</a></li>
+          </ul>
+        </section>
+      </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="side-bar">
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://www.facebook.com/latvmounters">Facebook</a></li>
-          <li><a href="https://google.com/maps/?cid=1230856629811416077">Google Page</a></li>
-          <li><a href="https://www.youtube.com/channel/UCgosoqZbb2zuNNxdqTDSFfQ">Youtube</a></li>
-          <li><a href="#">Pearltrees</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="#">Google Site</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://latvmounters.com/">Main</a></li>
-          <li><a href="https://g.page/latvmounters?share">Maps</a></li>
-          <li><a href="./media.html">Media</a></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
